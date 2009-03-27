@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.files = ["VERSION.yml", "README.rdoc", "lib/inquisition.rb", "lib/html5lib_sanitize.rb", "test/lib", "test/lib/animal.rb", "test/lib/whisky.rb", "test/inquisition_test.rb", "test/performance.rb", "test/test_helper.rb", "LICENSE"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/thumblemonks/inquisition}
+  s.post_install_message = %q{Choosy heretics choose Thumble Monks.}
   s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.1}
