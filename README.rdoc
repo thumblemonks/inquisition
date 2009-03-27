@@ -1,0 +1,7 @@
+= inquisition
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 toothrot. See LICENSE for details.
