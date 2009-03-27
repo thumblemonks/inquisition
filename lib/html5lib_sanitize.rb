@@ -45,7 +45,7 @@ class HTML5libSanitize
 #
 # The string returned is utf-8 encoded. If you want, you can use iconv to convert it to some other encoding.
 # (REXML trees are always utf-8 encoded.)
-  def sanitize_xhtml(html, options = {})
+  def self.sanitize_xhtml(html, options = {})
     @encoding = 'utf-8'
     @treebuilder = TreeBuilders::REXML::TreeBuilder
     @to_tree = false
@@ -81,7 +81,7 @@ class HTML5libSanitize
 #
 # The string returned is utf-8 encoded. If you want, you can use iconv to convert it to some other encoding.
 # (REXML trees are always utf-8 encoded.)
-  def sanitize_html(html, options = {})
+  def self.sanitize_html(html, options = {})
     @encoding = 'utf-8'
     @treebuilder = TreeBuilders::REXML::TreeBuilder
     @to_tree = false
@@ -109,7 +109,7 @@ class HTML5libSanitize
 # :call-seq:
 #    sanitize_rexml(tree)                    -> string
 #
-  def sanitize_rexml(tree)
+  def self.sanitize_rexml(tree)
     tokens = TreeWalkers.get_tree_walker('rexml2').new(tree)
     XHTMLSerializer.serialize(tokens, {:encoding=>'utf-8',
       :space_before_trailing_solidus => true,

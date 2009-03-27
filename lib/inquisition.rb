@@ -22,7 +22,7 @@ module Inquisition
       attributes.each do |attr|
         alias_method(:"#{attr}_without_cleansing", :"#{attr}")
         define_method(:"#{attr}") do
-          HTML5libSanitize.new.sanitize_html(send(:"#{attr}_without_cleansing"))
+          HTML5libSanitize.sanitize_html(send(:"#{attr}_without_cleansing"))
         end
       end
     end
@@ -31,7 +31,7 @@ module Inquisition
       attributes.each do |attr|
         alias_method(:"#{attr}_without_cleansing=", :"#{attr}=")
         define_method(:"#{attr}=") do |value|
-          send(:"#{attr}_without_cleansing=", HTML5libSanitize.new.sanitize_html(value))
+          send(:"#{attr}_without_cleansing=", HTML5libSanitize.sanitize_html(value))
         end
       end
     end
