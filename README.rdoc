@@ -4,4 +4,6 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2009 toothrot. See LICENSE for details.
+lib/html5lib_sanitize.rb Copyright (c) Jacques Distler
+
+Everything else is Copyright (c) 2009 Alexander Rakoczy. See LICENSE for details.
