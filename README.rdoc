@@ -1,6 +1,21 @@
 = inquisition
 
-Description goes here.
+== Introduction
+
+Inquisition will sanitize HTML as to help avoid cross site scripting attacks!
+It keeps your strings heresy-free.
+
+== How
+
+Inquisition offers you three methods on Object:
+
+  cleanse_attr *attributes
+  cleanse_attr_reader *attributes
+  cleanse_attr_writer *attributes
+
+These methods will wrap your getters and/or setters for an attribute through a
+HTML5 Sanitizer.  This should help to protect against most kinds of cross site
+scripting attacks.
 
 == Copyright
 
