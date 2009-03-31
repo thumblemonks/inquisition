@@ -33,5 +33,18 @@ class InquisitionTest < Test::Unit::TestCase
       private_origin = @whisky.attributes["origin"]
       assert_equal "<SCRIPT SRC=http://ha.ckers.org/xss.js>Scotland</SCRIPT>", @whisky.origin
     end
+
+    should "not show pain for setting blank attributes" do
+      @whisky.origin = nil
+      @whisky.name = nil
+      assert_equal nil, @whisky.origin
+      assert_equal nil, @whisky.name
+    end
+
+    should "not show pain for getting blank attributes" do
+      @whisky.update_attributes(:origin => nil, :name => nil)
+      assert_equal nil, @whisky.origin
+      assert_equal nil, @whisky.name
+    end
   end
 end
