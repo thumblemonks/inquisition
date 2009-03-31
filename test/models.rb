@@ -3,7 +3,7 @@ ActiveRecord::Base.establish_connection :adapter => 'sqlite3', :database => File
 class CreateSchema < ActiveRecord::Migration
   def self.up
     create_table :whiskies, :force => true do |t|
-      t.string :name, :origin, :descritpion
+      t.string :name, :origin, :description
       t.integer :abv
     end
     create_table :animals, :force => true do |t|
