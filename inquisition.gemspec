@@ -2,14 +2,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{inquisition}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["toothrot"]
   s.date = %q{2009-03-27}
   s.email = %q{scissorjammer@gmail.com}
   s.extra_rdoc_files = ["README.rdoc", "LICENSE"]
-  s.files = ["VERSION.yml", "README.rdoc", "lib/inquisition.rb", "lib/html5lib_sanitize.rb", "test/lib", "test/lib/animal.rb", "test/lib/whisky.rb", "test/inquisition_test.rb", "test/performance.rb", "test/test_helper.rb", "LICENSE"]
+  s.files = ["VERSION.yml", "README.rdoc", "lib/inquisition.rb", "lib/html5lib_sanitize.rb", "test/inquisition_test.rb", "test/performance.rb", "test/models.rb", "test/test_helper.rb", "Rakefile", "LICENSE"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/thumblemonks/inquisition}
   s.post_install_message = %q{Choosy heretics choose Thumble Monks.}
