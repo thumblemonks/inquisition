@@ -29,6 +29,8 @@ module Inquisition
         end
       end
       alias_method_chain :read_attribute, :cleansing
+
+      attributes.each { |attr| define_method(attr.to_sym) { read_attribute(attr.to_sym) } }
     end
 
     def cleanse_attr_writer(*attributes)

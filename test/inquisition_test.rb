@@ -13,7 +13,7 @@ class InquisitionTest < Test::Unit::TestCase
     end
 
     should "remove already-ingrained heresey" do
-      @whisky.instance_variable_set(:@name, "<script>alert('Cragganmore')</script>")
+      @whisky.instance_variable_set(:@attributes, "name" => "<script>alert('Cragganmore')</script>")
       assert_equal "&lt;script&gt;alert('Cragganmore')&lt;/script&gt;", @whisky.name
     end
 
