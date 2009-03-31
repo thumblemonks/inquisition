@@ -11,8 +11,6 @@ module Inquisition
   end
 
   module ClassMethods
-
-    # cleanse_attr creates getters and setters for the specified list of attributes.
     def cleanse_attr(*attributes)
       cleanse_attr_reader(*attributes)
       cleanse_attr_writer(*attributes)
@@ -20,18 +18,16 @@ module Inquisition
 
     def cleanse_attr_reader(*attributes)
       attributes.each do |attr|
-        alias_method(:"#{attr}_without_cleansing", :"#{attr}")
         define_method(:"#{attr}") do
-          HTML5libSanitize.sanitize_html(send(:"#{attr}_without_cleansing"))
+          HTML5libSanitize.sanitize_html(read_attribute(attr.to_sym))
         end
       end
     end
 
     def cleanse_attr_writer(*attributes)
       attributes.each do |attr|
-        alias_method(:"#{attr}_without_cleansing=", :"#{attr}=")
         define_method(:"#{attr}=") do |value|
-          send(:"#{attr}_without_cleansing=", HTML5libSanitize.sanitize_html(value))
+          write_attribute(attr.to_sym, HTML5libSanitize.sanitize_html(value))
         end
       end
     end

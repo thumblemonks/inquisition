@@ -1,14 +1,8 @@
-require 'rubygems'
-require 'test/unit'
-require 'shoulda'
-
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
+require 'rubygems'
+require 'test/unit'
+require 'activerecord'
+require 'shoulda'
 require 'inquisition'
-
-#Test models, yeah.
-require 'lib/animal'
-require 'lib/whisky'
-
-class Test::Unit::TestCase
-end
+require 'models'

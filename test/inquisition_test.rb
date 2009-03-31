@@ -19,7 +19,7 @@ class InquisitionTest < Test::Unit::TestCase
 
     should "cleanse heresy before setting" do
       @whisky.name = "<script>alert('Cragganmore')</script>"
-      private_name = @whisky.instance_variable_get(:@name)
+      private_name = @whisky.read_attribute(:name)
 
       assert_equal "&lt;script&gt;alert('Cragganmore')&lt;/script&gt;", private_name
     end
@@ -30,7 +30,7 @@ class InquisitionTest < Test::Unit::TestCase
 
     should "not cleanse and set fields not targeted for cleansing" do
       @whisky.origin = "<SCRIPT SRC=http://ha.ckers.org/xss.js>Scotland</SCRIPT>"
-      private_origin = @whisky.instance_variable_get(:@origin)
+      private_origin = @whisky.read_attribute(:origin)
       assert_equal "<SCRIPT SRC=http://ha.ckers.org/xss.js>Scotland</SCRIPT>", @whisky.origin
     end
   end
