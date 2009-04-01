@@ -19,7 +19,6 @@ scripting attacks.
 
 == Installation
 
-  sudo gem install html5
   sudo gem install thumblemonks-inquisition
 
 == Copyright
