@@ -17,6 +17,11 @@ These methods will wrap your getters and/or setters for an attribute through a
 HTML5 Sanitizer.  This should help to protect against most kinds of cross site
 scripting attacks.
 
+== Installation
+
+sudo gem install html5
+sudo gem install thumblemonks-inquisition
+
 == Copyright
 
 lib/html5lib_sanitize.rb Copyright (c) Jacques Distler
