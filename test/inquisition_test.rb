@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.join(File.dirname(__FILE__), 'test_helper')
 
 class InquisitionTest < Test::Unit::TestCase
   context "a fine Whisky" do
