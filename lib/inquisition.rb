@@ -11,12 +11,12 @@ module Inquisition
   end
 
   module ClassMethods
-    def cleanse_attr(*attributes)
-      cleanse_attr_reader(*attributes)
-      cleanse_attr_writer(*attributes)
+    def sanitize_attribute(*attributes)
+      sanitize_attribute_reader(*attributes)
+      sanitize_attribute_writer(*attributes)
     end
 
-    def cleanse_attr_reader(*attributes)
+    def sanitize_attribute_reader(*attributes)
       write_inheritable_attribute(:cleansed_attr_readers, attributes)
       class_inheritable_reader(:cleansed_attr_readers)
 
@@ -33,7 +33,7 @@ module Inquisition
       attributes.each { |attr| define_method(attr.to_sym) { read_attribute(attr.to_sym) } }
     end
 
-    def cleanse_attr_writer(*attributes)
+    def sanitize_attribute_writer(*attributes)
       write_inheritable_attribute(:cleansed_attr_writers, attributes)
       class_inheritable_reader(:cleansed_attr_writers)
 

@@ -21,7 +21,7 @@ class Animal < ActiveRecord::Base
 end
 
 class Whisky < ActiveRecord::Base
-  cleanse_attr :name, :description
+  sanitize_attribute :name, :description
 
   def drink
     "You quaffed #{description}"
