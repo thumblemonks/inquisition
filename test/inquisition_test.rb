@@ -48,7 +48,7 @@ class InquisitionTest < Test::Unit::TestCase
     end
   end
 
-  context "A sanitized whiskey" do
+  context "allowing a single character" do
     setup do
       @dumb_phrase = "Central Time (US & Canada)"
       @clean_dumb  = "Central Time (US &amp; Canada)"
@@ -61,6 +61,27 @@ class InquisitionTest < Test::Unit::TestCase
 
     should "not allow ampersands in the name" do
       assert_equal @clean_dumb, @whisky.name
+    end
+  end
+
+  context "allowing a regexp" do
+    setup do
+      @dumb_phrase = "<buttes> hey guy, I think <buttes> about <buttes>, because i have no clear opinion on <buttes>"
+      @clean_phrase = "&lt;buttes&gt; hey guy, I think &lt;buttes&gt; about &lt;buttes&gt;, because i have no clear opinion on &lt;buttes&gt;"
+      @whisky = Whisky.new(:measure => @dumb_phrase, :name => @dumb_phrase)
+    end
+
+    should "allow the regexp'd phrase in the measure" do
+      assert_equal @dumb_phrase, @whisky.measure
+    end
+
+    should "not allow the regexp'd phrase in the name" do
+      assert_equal @clean_phrase, @whisky.name
+    end
+
+    should "still clean non-matched parts" do
+      @whisky.measure = "<script>alert('Cragganmore')</script>"
+      assert_equal "&lt;script&gt;alert('Cragganmore')&lt;/script&gt;", @whisky.measure
     end
   end
 end

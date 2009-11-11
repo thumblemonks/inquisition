@@ -11,12 +11,8 @@ module Inquisition
   end
 
   def self.sanitize(value, allow)
-    if allow
-      if match = Regexp.new(allow).match(value)
-        [HTML5libSanitize.sanitize_html(match.pre_match), match.to_a.first, self.sanitize(match.post_match, allow)].join
-      else
-        value
-      end
+    if allow && match = Regexp.new(allow).match(value)
+      [HTML5libSanitize.sanitize_html(match.pre_match), match.to_a.first, self.sanitize(match.post_match, allow)].join
     else
       HTML5libSanitize.sanitize_html(value)
     end

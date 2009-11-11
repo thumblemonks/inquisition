@@ -3,7 +3,7 @@ ActiveRecord::Base.establish_connection :adapter => 'sqlite3', :database => File
 class CreateSchema < ActiveRecord::Migration
   def self.up
     create_table :whiskies, :force => true do |t|
-      t.string :name, :origin, :description
+      t.string :name, :origin, :description, :measure
       t.integer :abv
     end
     create_table :animals, :force => true do |t|
@@ -21,7 +21,7 @@ class Animal < ActiveRecord::Base
 end
 
 class Whisky < ActiveRecord::Base
-  sanitize_attribute :name, :description, :allow => { :description => "&" }
+  sanitize_attribute :name, :description, :measure, :allow => { :description => "&", :measure => /(<buttes>)/ }
 
   def drink
     "You quaffed #{description}"
