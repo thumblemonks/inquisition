@@ -1,4 +1,4 @@
-= inquisition
+= Inquisition
 
 == Introduction
 
@@ -9,13 +9,20 @@ It keeps your strings heresy-free.
 
 Inquisition offers you three methods on Object:
 
-  cleanse_attr *attributes
-  cleanse_attr_reader *attributes
-  cleanse_attr_writer *attributes
+  cleanse_attr *attributes, options
+  cleanse_attr_reader *attributes, options
+  cleanse_attr_writer *attributes, options
 
 These methods will wrap your getters and/or setters for an attribute through a
 HTML5 Sanitizer.  This should help to protect against most kinds of cross site
 scripting attacks.
+
+For example:
+
+  cleanse_attr :name, :allow => {:name => /(<strong>)/}
+
+The above example will clean all values written to or read from the name
+attribute, but will not remove strong tags.
 
 == Installation
 
