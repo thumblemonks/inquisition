@@ -47,4 +47,20 @@ class InquisitionTest < Test::Unit::TestCase
       assert_equal nil, @whisky.name
     end
   end
+
+  context "A sanitized whiskey" do
+    setup do
+      @dumb_phrase = "Central Time (US & Canada)"
+      @clean_dumb  = "Central Time (US &amp; Canada)"
+      @whisky = Whisky.new(:description => @dumb_phrase, :name => @dumb_phrase)
+    end
+
+    should "allow ampersands in the description" do
+      assert_equal @dumb_phrase, @whisky.description
+    end
+
+    should "not allow ampersands in the name" do
+      assert_equal @clean_dumb, @whisky.name
+    end
+  end
 end

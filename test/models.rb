@@ -21,7 +21,7 @@ class Animal < ActiveRecord::Base
 end
 
 class Whisky < ActiveRecord::Base
-  sanitize_attribute :name, :description
+  sanitize_attribute :name, :description, :allow => { :description => "&" }
 
   def drink
     "You quaffed #{description}"
