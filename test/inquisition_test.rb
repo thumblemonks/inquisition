@@ -84,4 +84,9 @@ class InquisitionTest < Test::Unit::TestCase
       assert_equal "&lt;script&gt;alert('Cragganmore')&lt;/script&gt;", @whisky.measure
     end
   end
+
+  should "not die gruesomely without options specified" do
+    animal = Animal.new(:name => "<script>alert('Grue')</script>")
+    assert_equal "&lt;script&gt;alert('Grue')&lt;/script&gt;", animal.name
+  end
 end

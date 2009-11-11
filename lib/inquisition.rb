@@ -38,7 +38,8 @@ module Inquisition
         define_method(:read_attribute_with_cleansing) do |attribute|
           value = read_attribute_without_cleansing(attribute)
           if cleansed_attr_readers.include?(attribute.to_sym) && !value.blank?
-            Inquisition.sanitize(value,cleansed_attr_reader_options[:allow][attribute.to_sym])
+            Inquisition.sanitize(value,
+              cleansed_attr_reader_options[:allow] ? cleansed_attr_reader_options[:allow][attribute.to_sym] : nil)
           else
             value
           end
@@ -62,7 +63,8 @@ module Inquisition
 
         define_method(:write_attribute_with_cleansing) do |attribute, value|
           if cleansed_attr_writers.include?(attribute.to_sym) && !value.blank?
-            Inquisition.sanitize(value,cleansed_attr_writer_options[:allow][attribute.to_sym])
+            Inquisition.sanitize(value,
+              cleansed_attr_writer_options[:allow] ? cleansed_attr_writer_options[:allow][attribute.to_sym] : nil)
           end
           write_attribute_without_cleansing(attribute, value)
         end

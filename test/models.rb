@@ -15,6 +15,8 @@ end
 CreateSchema.suppress_messages { CreateSchema.migrate(:up) }
 
 class Animal < ActiveRecord::Base
+  sanitize_attribute :name
+
   def bark
     "#{noise.capitalize}! #{noise.capitalize}!"
   end
