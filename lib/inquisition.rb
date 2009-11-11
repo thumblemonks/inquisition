@@ -12,9 +12,11 @@ module Inquisition
 
   def self.sanitize(value, allow)
     if allow
-      value.split(allow.blank? ? " " : allow).map do |partial|
-        HTML5libSanitize.sanitize_html(partial)
-      end.join(allow)
+      if match = Regexp.new(allow).match(value)
+        [HTML5libSanitize.sanitize_html(match.pre_match), match.to_a.first, self.sanitize(match.post_match, allow)].join
+      else
+        value
+      end
     else
       HTML5libSanitize.sanitize_html(value)
     end
